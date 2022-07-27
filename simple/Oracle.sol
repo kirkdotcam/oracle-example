@@ -5,7 +5,8 @@ contract WeatherOracle {
     mapping(uint =>bool) public jobStatus;
     mapping(uint=>uint) public jobResults;
 
-    uint jobId;
+    uint public jobId;
+    uint public latestTemp;
 
     event NewJob(uint lat, uint lon, uint jobId);
 
@@ -24,6 +25,7 @@ contract WeatherOracle {
 
         jobResults[_jobId] = temp;
         jobStatus[_jobId] = true;
+        latestTemp = temp;
         
     }
 }
